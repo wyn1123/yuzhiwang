@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金桥数字文娱法律服务团队 - 科技化服务介绍</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "微软雅黑", "Roboto", sans-serif; }
+        :root {
+            --bg-main: #0F172A; /* 深蓝主背景 */
+            --bg-card: #1E293B; /* 卡片背景 */
+            --text-primary: #F8FAFC; /* 主文字色 */
+            --text-secondary: #94A3B8; /* 次要文字色 */
+            --accent-cyan: #06B6D4; /* 霓虹青 */
+            --accent-purple: #8B5CF6; /* 霓虹紫 */
+            --border-light: #334155; /* 边框色 */
+            --gradient-title: linear-gradient(90deg, #06B6D4 0%, #8B5CF6 100%); /* 标题渐变 */
+        }
+        body { 
+            background-color: var(--bg-main); 
+            color: var(--text-primary);
+            line-height: 1.8; 
+            font-size: 16px; 
+            padding: 30px; 
+            max-width: 1200px; 
+            margin: 0 auto;
+            background-image: 
+                linear-gradient(rgba(15,23,42,0.95) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15,23,42,0.95) 1px, transparent 1px);
+            background-size: 20px 20px; /* 网格背景 */
+        }
+        /* 标题样式 */
+        .header {
+            text-align: center;
+            margin: 40px 0 60px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 2px;
+            background: var(--gradient-title);
+            border-radius: 1px;
+        }
+        .main-title {
+            font-size: 32px;
+            font-weight: 700;
+            background: var(--gradient-title);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        .sub-title {
+            color: var(--text-secondary);
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* 卡片样式 */
+        .section {
+            margin-bottom: 50px;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            color: var(--accent-cyan);
+        }
+        .section-title::before {
+            content: "▸";
+            color: var(--accent-purple);
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-title);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);
+        }
+        .card-title {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--accent-purple);
+            display: flex;
+            align-items: center;
+        }
+        .card-title i {
+            margin-right: 8px;
+            font-style: normal;
+            color: var(--accent-cyan);
+        }
+        .card-content {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+        .card-content ul {
+            margin-left: 20px;
+            list-style-type: disc;
+        }
+        .card-content li {
+            margin: 8px 0;
+        }
+        /* 特殊板块样式 */
+        .advantage-card {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .advantage-item {
+            padding: 20px;
+            border-radius: 8px;
+            background-color: rgba(30, 41, 59, 0.7);
+            border: 1px solid var(--border-light);
+            text-align: center;
+        }
+        .advantage-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+            background: var(--gradient-title);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .advantage-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--accent-cyan);
+        }
+        .cooperation {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15,23,42,0.8));
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+        }
+        .cooperation-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--accent-purple);
+        }
+        .cooperation-desc {
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto 30px;
+        }
+        .btn-contact {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--gradient-title);
+            color: white;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-contact:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+            .main-title {
+                font-size: 26px;
+            }
+            .section-title {
+                font-size: 22px;
+            }
+            body {
+                padding: 20px;
+            }
+            .advantage-card {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .advantage-card {
+                grid-template-columns: 1fr;
+            }
+            .cooperation {
+                padding: 25px;
+            }
+            .btn-contact {
+                padding: 10px 25px;
+                font-size: 15px;
+            }
+        }
+        /* 打印适配 */
+        @media print {
+            body {
+                background-color: white;
+                color: #333;
+                background-image: none;
+                padding: 0;
+            }
+            .header::after {
+                background: linear-gradient(90deg, #000 0%, #666 100%);
+            }
+            .main-title {
+                color: #000;
+                background: none;
+                -webkit-background-clip: unset;
+                background-clip: unset;
+            }
+            .sub-title, .card-content, .cooperation-desc {
+                color: #666;
+            }
+            .section-title, .card-title, .advantage-title, .cooperation-title {
+                color: #000;
+            }
+            .card, .cooperation, .advantage-item {
+                background-color: white;
+                border: 1px solid #ddd;
+            }
+            .card::before {
+                background: linear-gradient(90deg, #000 0%, #666 100%);
+            }
+            .btn-contact {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部标题 -->
+    <div class="header">
+        <h1 class="main-title">金桥数字文娱法律服务团队</h1>
+        <p class="sub-title">专注文娱产业·全链条法律护航 | 以“产业认知+法律专业”双驱动，赋能影视、音乐、直播、游戏、元宇宙AIGC等前沿业态</p>
+    </div>
+
+    <!-- 核心服务矩阵 -->
+    <div class="section">
+        <h2 class="section-title">核心服务矩阵</h2>
+        <div class="card-container">
+            <!-- 影视产业 -->
+            <div class="card">
+                <h3 class="card-title"><i>🎬</i>影视产业全流程法律服务</h3>
+                <div class="card-content">
+                    <ul>
+                        <li>大制作院线电影：剧本确权、投融资合规、海外发行备案、分账争议解决</li>
+                        <li>网络影视：发行备案指导、平台合作协议审核、税务筹划</li>
+                        <li>短剧/微短剧：区块链存证、备案加急、标准化合同包、侵权快速维权</li>
+                        <li>沉浸式影视：场地安全合规、IP改编授权、肖像权保护</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 音乐产业 -->
+            <div class="card">
+                <h3 class="card-title"><i>🎵</i>音乐产业分层法律服务</h3>
+                <div class="card-content">
+                    <ul>
+                        <li>独立音乐人/中小厂牌：版权登记、配乐侵权风控、低成本维权</li>
+                        <li>头部艺人/唱片公司：全球版权授权体系、品牌代言审核、跨境演出合规</li>
+                        <li>音乐平台/直播音乐：用户协议制定、版权池搭建、UGC内容侵权审核</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 直播与MCN -->
+            <div class="card">
+                <h3 class="card-title"><i>📹</i>直播与MCN全场景法律服务</h3>
+                <div class="card-content">
+                    <ul>
+                        <li>MCN机构：合规搭建、直播脚本预审、供应链合规、主播纠纷应对</li>
+                        <li>主播/艺人：合同审核、肖像权保护、薪资纠纷维权、解约策略制定</li>
+                        <li>直播电商：带货广告合规、跨境运营合规、消费者维权应对</li>
+                        <li>直播打赏专项：共同财产追索、债务界定、平台责任认定</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 游戏与电竞 -->
+            <div class="card">
+                <h3 class="card-title"><i>🎮</i>游戏与电竞产业专项法律服务</h3>
+                <div class="card-content">
+                    <ul>
+                        <li>游戏研发：代码/角色版权保护、AI训练数据合规、算法评估</li>
+                        <li>游戏运营：版号申请、防沉迷系统搭建、虚拟道具交易规则设计</li>
+                        <li>电竞产业：赛事规则设计、直播权授权、选手合同、转会协议</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 元宇宙与AIGC -->
+            <div class="card">
+                <h3 class="card-title"><i>🤖</i>元宇宙与AIGC前沿法律服务</h3>
+                <div class="card-content">
+                    <ul>
+                        <li>AIGC内容创作：版权归属界定、训练数据授权核查、侵权纠纷应对</li>
+                        <li>虚拟偶像/数字藏品：形象确权与商业授权、虚拟演出备案</li>
+                        <li>数字藏品发行合规、虚拟资产交易规则设计、相关纠纷维权</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 重点客户专项适配 -->
+    <div class="section">
+        <h2 class="section-title">重点客户专项适配</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3 class="card-title"><i>👶</i>未成年人文娱参与者保护</h3>
+                <div class="card-content">
+                    未成年人主播/艺人签约合规审核、专属合同制定、劳动权益保护、打赏退款代理、家长维权支持，全面适配政策导向。
+                </div>
+            </div>
+            <div class="card">
+                <h3 class="card-title"><i>🚀</i>中小微文娱企业/个体创作者赋能</h3>
+                <div class="card-content">
+                    营业执照办理与经营范围优化、基础合同模板包、区块链存证优惠套餐、小额诉讼援助、税收优惠与产业补贴申报指导。
+                </div>
+            </div>
+            <div class="card">
+                <h3 class="card-title"><i>🌐</i>跨境文娱企业全球化支持</h3>
+                <div class="card-content">
+                    目标市场法律适配、数据本地化合规、外汇结算指导、多语言跨境合作协议起草、跨境诉讼/仲裁代理、国际知识产权维权。
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 团队核心优势 -->
+    <div class="section">
+        <h2 class="section-title">团队核心优势</h2>
+        <div class="card">
+            <div class="advantage-card">
+                <div class="advantage-item">
+                    <div class="advantage-icon">🎯</div>
+                    <h4 class="advantage-title">行业深耕 精准匹配</h4>
+                    <p class="card-content">核心成员兼具文娱产业从业背景与法律专业资质，深谙行业运营逻辑，精准预判特有风险</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">⚙️</div>
+                    <h4 class="advantage-title">差异化服务 灵活适配</h4>
+                    <p class="card-content">大型企业定制化风控，中小主体低成本标准化套餐，支持风险代理、加急服务等灵活模式</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">⚡</div>
+                    <h4 class="advantage-title">快速响应 高效落地</h4>
+                    <p class="card-content">24小时应急响应机制，突发纠纷快速取证维权，开通备案、版号申请绿色通道</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">🔗</div>
+                    <h4 class="advantage-title">资源联动 全链赋能</h4>
+                    <p class="card-content">联动知识产权代理机构、产业园区、文娱平台，提供“法律+产业+资金+渠道”一体化方案</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 合作对接 -->
+    <div class="section">
+        <div class="cooperation">
+            <h2 class="cooperation-title">合作对接：让法律护航贯穿文娱项目全周期</h2>
+            <p class="cooperation-desc">我们可根据您的项目阶段、业态类型、规模需求，定制专属服务方案。无论是项目前期合规搭建、运营中风险防控，还是纠纷应对与商业变现赋能，随时联系对接，让专业法律服务成为您文娱事业发展的坚实后盾。</p>
+            <a href="tel:18875137569" class="btn-contact">立即对接咨询</a>
+        </div>
+    </div>
+
+    <!-- 底部 电话+二维码 快速联系通道【完美显示+点击拨号】 -->
+    <div class="section">
+        <h2 class="section-title">快速联系通道</h2>
+        <div class="card-container">
+            <!-- 咨询电话 - 点击号码直接拨号 -->
+            <div class="card">
+                <h3 class="card-title"><i>📞</i>直接拨打咨询电话</h3>
+                <div class="card-content" style="text-align: center; padding: 10px 0;">
+                    <a href="tel:18875137569" style="color: var(--accent-cyan); font-size: 22px; font-weight: 700; text-decoration: none;">18875137569</a>
+                    <p style="margin-top: 10px; color: var(--text-secondary);">点击号码即可直接拨打，24小时在线响应</p>
+                </div>
+            </div>
+            <!-- 微信二维码 - 永久在线链接 百分百显示 -->
+            <div class="card">
+                <h3 class="card-title"><i>📱</i>添加玉芝律师微信咨询</h3>
+                <div class="card-content" style="text-align: center;">
+                    <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/69a5f4b1e2764fc1b8ac723557565b2f.jpg~tplv-a9rns2rl98-image.png?lk3s=8e244e95&rcl=202601132343027B6AB8B249795CF80868&rrcfp=dafada99&x-expires=2084542982&x-signature=XKxOz%2BRg2%2F6o2rBCEbB%2B7yzAPQ8%3D" alt="玉芝律师微信二维码" style="width: 230px; height: 230px; margin: 10px auto; border-radius: 10px; border: 1px solid var(--accent-cyan);">
+                    <p style="margin-top: 12px; color: var(--text-secondary);">扫描上方二维码，添加玉芝律师微信咨询</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
